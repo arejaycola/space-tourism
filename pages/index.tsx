@@ -5,12 +5,34 @@ import Page from '../components/Page';
 const FlexContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: flex-end;
 	color: white;
 `;
 
 const LeftSide = styled.div`
-	padding: 0 20px;
+	flex-basis: 30%;
+	/* padding: 0 200px 0 0%; */
+`;
+
+const RightSide = styled.div`
+	background-color: white;
+	width: 275px;
+	height: 275px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&::after {
+		content: 'Explore';
+		color: #0b0d17;
+		font-family: 'Bellefair';
+		font-size: 32px;
+		line-height: 37px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
 `;
 
 const Top = styled.div`
@@ -24,7 +46,17 @@ const Top = styled.div`
 const Middle = styled.div`
 	font-size: 150px;
 	font-family: 'Bellefair';
-  text-transform: uppercase;
+	text-transform: uppercase;
+	justify-self: flex-end;
+`;
+
+const Bottom = styled.div`
+	font-family: 'barlow';
+	line-height: 32px;
+	font-size: 18px;
+	text-align: justify;
+	font-weight: 200;
+	color: #d0d6f9;
 `;
 
 const Home: NextPage = () => {
@@ -34,19 +66,12 @@ const Home: NextPage = () => {
 				<LeftSide>
 					<Top>So, you want to travel to </Top>
 					<Middle>space</Middle>
-					<div>
+					<Bottom>
 						Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of
 						it. Well sit back, and relax because we’ll give you a truly out of this world experience!
-					</div>
+					</Bottom>
 				</LeftSide>
-				<LeftSide>
-					<div>So, you want to travel to </div>
-					<div> space</div>
-					<div>
-						Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of
-						it. Well sit back, and relax because we’ll give you a truly out of this world experience!
-					</div>
-				</LeftSide>
+				<RightSide />
 			</FlexContainer>
 		</Page>
 	);

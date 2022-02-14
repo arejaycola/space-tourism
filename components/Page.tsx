@@ -19,7 +19,6 @@ const StyledBody = styled.body`
 	height: 100vh;
 	background-image: url('/assets/home/background-home-desktop.jpg');
 	background-attachment: fixed;
-	padding-top: 200px;
 `;
 
 const Page = ({ className = '', selectedUrl, children }: { className: string; selectedUrl: string; children: React.ReactNode }) => {

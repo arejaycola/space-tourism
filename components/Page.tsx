@@ -10,22 +10,31 @@ const StyledPage = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	height: 100%;
-	/* align-self: center; */
 	color: white;
 `;
 
-const StyledBody = styled.body`
+const StyledBody = styled.main<{ backgroundImage: string }>`
 	background-size: cover;
 	height: 100vh;
-	background-image: url('/assets/home/background-home-desktop.jpg');
+	background-image: ${({ backgroundImage = '' }) => `url(${backgroundImage})`};
 	background-attachment: fixed;
 `;
 
-const Page = ({ className = '', selectedUrl, children }: { className: string; selectedUrl: string; children: React.ReactNode }) => {
+const Page = ({
+	className = '',
+	selectedUrl,
+	backgroundImage,
+	children,
+}: {
+	className: string;
+	selectedUrl: string;
+	backgroundImage: string;
+	children: React.ReactNode;
+}) => {
 	return (
 		<>
 			<Header selectedURL={selectedUrl} />
-			<StyledBody>
+			<StyledBody backgroundImage={backgroundImage}>
 				<StyledPage className={className}>{children}</StyledPage>
 			</StyledBody>
 		</>

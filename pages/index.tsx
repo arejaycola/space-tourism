@@ -12,7 +12,6 @@ const FlexContainer = styled.div`
 
 const LeftSide = styled.div`
 	flex-basis: 30%;
-	/* padding: 0 200px 0 0%; */
 `;
 
 const RightSide = styled.div`
@@ -61,7 +60,7 @@ const Bottom = styled.div`
 
 const Home: NextPage = () => {
 	return (
-		<Page className="" selectedUrl="/">
+		<Page className="" selectedUrl="/" backgroundImage="/assets/home/background-home-desktop.jpg">
 			<FlexContainer className="">
 				<LeftSide>
 					<Top>So, you want to travel to </Top>

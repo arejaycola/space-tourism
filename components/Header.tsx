@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Nav, { NavOption } from './Nav';
 
 const StyledHeader = styled.header`
 	color: #fff;
@@ -17,18 +18,6 @@ const StyledHeader = styled.header`
 	font-weight: 400;
 `;
 
-const Nav = styled.nav`
-	display: flex;
-	flex-basis: 60%;
-	height: 100px;
-	justify-content: flex-start;
-	align-items: stretch;
-	margin-left: -25px;
-	background: rgba(255, 255, 255, 0.04);
-	backdrop-filter: blur(10px);
-	letter-spacing: 2px;
-`;
-
 const Divider = styled.div`
 	border-bottom: 1px solid #fff;
 	display: flex;
@@ -38,46 +27,38 @@ const Divider = styled.div`
 	z-index: 100;
 `;
 
-const StyledLink = styled.a<{ isSelected: boolean }>`
-	align-items: stretch;
-	align-self: center;
-	margin-left: 70px;
-
-	position: relative;
-	span {
-		font-weight: 700;
-		margin-right: 5px;
-	}
-
-	&:after {
-		content: '';
-		position: absolute;
-		bottom: -40px;
-		left: 0;
-		width: 100%;
-		height: 3px;
-		${({ isSelected }) => isSelected && 'background-color: white'}
-	}
+const StyledNav = styled.div`
+	flex-basis: 60%;
+	height: 100px;
+	margin-left: -25px;
+	background: rgba(255, 255, 255, 0.04);
+	backdrop-filter: blur(10px);
+	letter-spacing: 2px;
+	display: flex;
 `;
 
 const Header = ({ selectedURL }: { selectedURL: string }) => {
-	const options = [
+	const options: NavOption[] = [
 		{
+            id: 1,
 			link: '/',
 			labelNumber: '00',
 			labelText: 'HOME',
 		},
 		{
+            id: 2,
 			link: '/destination',
 			labelNumber: '01',
 			labelText: 'DESTINATION',
 		},
 		{
+            id: 3,
 			link: '/crew',
 			labelNumber: '02',
 			labelText: 'CREW',
 		},
 		{
+            id: 4,
 			link: '/technology',
 			labelNumber: '03',
 			labelText: 'TECHNOLOGY',
@@ -88,17 +69,9 @@ const Header = ({ selectedURL }: { selectedURL: string }) => {
 		<StyledHeader>
 			<Image src="/assets/shared/logo.svg" alt="" width="48px" height="48px" priority />
 			<Divider />
-			<Nav>
-				{options.map((option) => {
-					return (
-						<Link key={option.labelNumber} href={option.link} passHref>
-							<StyledLink isSelected={option.link === selectedURL ? true : false}>
-								<span>{option.labelNumber}</span> {option.labelText}
-							</StyledLink>
-						</Link>
-					);
-				})}
-			</Nav>
+			<StyledNav>
+				<Nav selectedURL={selectedURL} options={options} />
+			</StyledNav>
 		</StyledHeader>
 	);
 };
